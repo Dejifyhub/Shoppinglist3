@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css" />
+  <link rel="stylesheet" href="style.css">
+  <title>Advanced Shopping List</title>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div class="header-content">
+        <img src="images/note.png" alt="" class="header-icon"/>
+        <h1>Shopping List</h1>
+      </div>
+      <div class="header-stats">
+        <span class="stat-item">
+          <i class="fas fa-list"></i>
+          <span id="total-items">0</span> items
+        </span>
+        <span class="stat-item">
+          <i class="fas fa-check-circle"></i>
+          <span id="purchased-items">0</span> purchased
+        </span>
+      </div>
+    </header>
+
+    <form id="item-form">
+      <div class="form-grid">
+        <div class="form-control full-width">
+          <label for="item-input">Item Name *</label>
+          <input type="text" class="form-input" id="item-input" name="item" placeholder="Enter item name" required />
+        </div>
+
+        <div class="form-control">
+          <label for="quantity-input">Quantity</label>
+          <input type="number" class="form-input" id="quantity-input" name="quantity" placeholder="1" min="1" value="1" />
+        </div>
+
+        <div class="form-control">
+          <label for="category-input">Category</label>
+          <select class="form-input" id="category-input" name="category">
+            <option value="general">General</option>
+            <option value="produce">Produce</option>
+            <option value="dairy">Dairy</option>
+            <option value="meat">Meat & Seafood</option>
+            <option value="bakery">Bakery</option>
+            <option value="beverages">Beverages</option>
+            <option value="snacks">Snacks</option>
+            <option value="frozen">Frozen</option>
+            <option value="household">Household</option>
+            <option value="personal">Personal Care</option>
+          </select>
+        </div>
+
+        <div class="form-control">
+          <label for="priority-input">Priority</label>
+          <select class="form-input" id="priority-input" name="priority">
+            <option value="low">Low</option>
+            <option value="medium" selected>Medium</option>
+            <option value="high">High</option>
+          </select>
+        </div>
+
+        <div class="form-control full-width">
+          <label for="notes-input">Notes (Optional)</label>
+          <input type="text" class="form-input" id="notes-input" name="notes" placeholder="Add notes or description" />
+        </div>
+      </div>
+
+      <div class="form-actions">
+        <button type="submit" class="btn btn-primary" id="form-btn">
+          <i class="fa-solid fa-plus"></i> Add Item
+        </button>
+        <button type="button" class="btn btn-secondary" id="cancel-edit-btn" style="display: none;">
+          <i class="fa-solid fa-times"></i> Cancel
+        </button>
+      </div>
+    </form>
+
+    <div class="controls">
+      <div class="filter-section">
+        <input type="text" class="form-input-filter" id="filter" placeholder="Search items..." />
+        <i class="fas fa-search search-icon"></i>
+      </div>
+
+      <div class="view-controls">
+        <label for="category-filter">Filter by:</label>
+        <select class="form-input small" id="category-filter">
+          <option value="all">All Categories</option>
+          <option value="general">General</option>
+          <option value="produce">Produce</option>
+          <option value="dairy">Dairy</option>
+          <option value="meat">Meat & Seafood</option>
+          <option value="bakery">Bakery</option>
+          <option value="beverages">Beverages</option>
+          <option value="snacks">Snacks</option>
+          <option value="frozen">Frozen</option>
+          <option value="household">Household</option>
+          <option value="personal">Personal Care</option>
+        </select>
+
+        <select class="form-input small" id="sort-items">
+          <option value="date-desc">Newest First</option>
+          <option value="date-asc">Oldest First</option>
+          <option value="priority">Priority</option>
+          <option value="category">Category</option>
+          <option value="name">Name (A-Z)</option>
+        </select>
+
+        <button class="btn-icon" id="toggle-view" title="Toggle view">
+          <i class="fas fa-th"></i>
+        </button>
+      </div>
+    </div>
+
+    <div class="list-container">
+      <ul id="item-list" class="items grid-view"></ul>
+      
+      <div class="empty-state" id="empty-state">
+        <i class="fas fa-shopping-basket"></i>
+        <h3>Your shopping list is empty</h3>
+        <p>Add items to get started!</p>
+      </div>
+    </div>
+
+    <div class="action-buttons">
+      <button id="clear-purchased" class="btn btn-outline">
+        <i class="fas fa-check-double"></i> Clear Purchased
+      </button>
+      <button id="clear" class="btn btn-danger">
+        <i class="fas fa-trash"></i> Clear All
+      </button>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
